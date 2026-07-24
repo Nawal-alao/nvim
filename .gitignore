@@ -1,0 +1,47 @@
+# Neovim / editor temporary files
+*.swp
+*.swo
+*.tmp
+*.temp
+*~
+*.bak
+*.orig
+*.rej
+.netrwhist
+.session
+.session.*
+
+# Swap / backup / undo / recovery
+.swap/
+.swp/
+.undo/
+.backup/
+.recovery/
+
+# Local runtime data and caches
+.nvim/
+.nvim-data/
+.cache/
+.local/
+.state/
+logs/
+*.log
+
+# Plugin and language server caches
+plugin/packer_compiled.lua
+lazy-state/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+node_modules/
+
+# IDE / OS clutter
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Optional local secrets or environment files
+.env
+.env.*
