@@ -26,6 +26,9 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
+  git = {
+    timeout = 1000,
+  },
   defaults = {
     lazy = true, -- Charge les plugins en lazy par défaut
     version = false, -- Utilise toujours le dernier commit
@@ -99,7 +102,9 @@ require("lazy").setup({
 if vim.g.neovide then
   -- Définit la police et sa taille initiale (ex: 10)
   vim.o.guifont = "JetBrainsMono Nerd Font:h10"
-  -- vim.g.neovide_opacity = 0.85
+  vim.g.neovide_opacity = 0.8
+  vim.g.neovide_normal_opacity = 0.8
+  vim.g.neovide_window_blurred = true
 end
 require("config.keymaps")
 require("config.autocmds")

@@ -377,26 +377,19 @@ return {
       padding = { left = 1, right = 1 },
     }
 
-    -- Composant : Codeium Statut
-    local codeium_status = {
+    -- Composant : Copilot Statut
+    local copilot_status = {
       function()
-        if vim.fn.exists("*codeium#GetStatusString") == 1 then
-          local status = vim.fn["codeium#GetStatusString"]()
-          status = status:gsub("^%s*", "")
-          if status == "" then
-            return "󰘦 Codeium"
-          end
-          return "󰘦 " .. status
+        local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
+        if ok and #clients > 0 then
+          return "󰘦 Copilot"
         end
-        return "󰘦 Codeium"
+        return "󰘦 OFF"
       end,
       color = function()
-        if vim.fn.exists("*codeium#GetStatusString") == 1 then
-          local status = vim.fn["codeium#GetStatusString"]():gsub("^%s*", "")
-          if status == "OFF" or status == "0" then
-            return { fg = c.overlay, bg = c.surface0 }
-          end
-          return { fg = c.green, bg = c.surface0 }
+        local ok, clients = pcall(vim.lsp.get_clients, { name = "copilot", bufnr = 0 })
+        if ok and #clients > 0 then
+          return { fg = c.teal, bg = c.surface0 }
         end
         return { fg = c.overlay, bg = c.surface0 }
       end,
@@ -490,7 +483,7 @@ return {
 
         lualine_x = {
           codecompanion_status,
-          codeium_status,
+          copilot_status,
           lazy_updates,
           python_venv,
           lsp_clients,

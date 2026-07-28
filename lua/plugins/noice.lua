@@ -153,6 +153,7 @@ return {
       hover = {
         ["|(%S-)|"] = vim.cmd.help,
         ["%[.-%]%((%S-)%)"] = require("noice.util").open,
+        -- ["%[.-%]%((%S-)%)"] = function(...) return require("noice.util").open(...) end,
       },
       highlights = {
         ["|%S-|"]             = "@text.reference",
