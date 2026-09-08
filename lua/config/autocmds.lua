@@ -384,27 +384,6 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 -- ─── MESSAGES & NOTIFICATIONS ────────────────────────────────────────────────
 -- ============================================================================
 
--- Message de bienvenue au chargement complet
-vim.api.nvim_create_autocmd("User", {
-  group    = augroup("LazyVimStarted"),
-  pattern  = "LazyVimStarted",
-  once     = true,
-  callback = function()
-    local ok, lazy = pcall(require, "lazy")
-    if not ok then return end
-    local stats = lazy.stats()
-    local ms    = math.floor(stats.startuptime * 100 + 0.5) / 100
-    vim.notify(
-      string.format(
-        "⚡ Neovim Python IDE prêt en %.2fms\n   %d plugins chargés",
-        ms, stats.loaded
-      ),
-      vim.log.levels.INFO,
-      { title = "Démarrage", timeout = 3000 }
-    )
-  end,
-})
-
 -- Notification si pas de session Python active
 vim.api.nvim_create_autocmd("FileType", {
   group    = augroup("PythonVenvWarning"),
